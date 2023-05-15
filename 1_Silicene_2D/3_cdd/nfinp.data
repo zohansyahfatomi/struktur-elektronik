@@ -1,0 +1,64 @@
+Control{
+    cpumax = 3600 sec
+    condition = Initial 
+}
+accuracy{
+    cutoff_wf = 25.00 rydberg
+    cutoff_cd = 225.00 rydberg
+    ksampling{
+        mesh{
+            nx = 8 
+            ny = 8 
+            nz = 1 
+        }
+    }
+}
+structure{
+    magnetic_state = ferro
+    atom_list{
+        atoms{
+        #default weight = 1
+            #tag element rx ry rz mobile
+             Si 0.333333333 0.6666666666 0.017470833 0
+             Si -0.333333333 -0.6666666666 -0.017470833 0
+        }
+    }
+    element_list{
+        #tag element atomicnumber mass zeta deviation
+         Si 14 51196.4212 0.0 1.83
+    }
+    unit_cell_type = bravais 
+    unit_cell{
+        a = 7.3536079394
+        b = 7.3536079394
+        c = 22.6767 
+        alpha = 90.00 
+        beta = 90.00 
+        gamma = 120
+    }
+}
+wavefunction_solver{
+    solvers{
+        #tag sol till_n prec cmix submat
+         mddavidson 2 on 1 on
+         rmm3 -1 on 1 on
+    }
+    rmm{
+        edelta_change_to_rmm = 1e-3 
+    }
+}
+charge_mixing{
+    mixing_methods{
+        #tag no method rmxs rmxe istr nbmix update
+         1 pulay 0.40 0.40 3 15 RENEW
+    }
+}
+postprocessing{
+	charge{
+		sw_charge_rspace = on
+		filetype = cube
+	}
+}
+printoutlevel{
+    base = 1 
+}
