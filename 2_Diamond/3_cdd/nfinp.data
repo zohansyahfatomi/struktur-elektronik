@@ -1,0 +1,73 @@
+structure{
+    atom_list{
+        atoms{
+            #default mobile = 1
+            #tag element rx ry rz mobile
+             C 0.25 0.75 0.25 1
+             C 0.0 0.0 0.5 1
+             C 0.25 0.25 0.75 1
+             C 0.0 0.5 0.0 1
+             C 0.75 0.75 0.75 1
+             C 0.5 0.0 0.0 1
+             C 0.75 0.25 0.25 1
+             C 0.5 0.5 0.5 1
+        }
+        coordinate_system = internal 
+    }
+    element_list{
+        #tag element atomicnumber mass zeta deviation
+         C 6 21894.5796 0.0 1.83
+    }
+    unit_cell{
+        #units angstrom
+        a = 3.57371 
+        b = 3.57371 
+        c = 3.57371 
+        alpha = 90.00 
+        beta = 90.00 
+        gamma = 90.00 
+    }
+}
+accuracy{
+    ksampling{
+        mesh{
+            nx = 4 
+            ny = 4 
+            nz = 4 
+        }
+        method = mesh 
+    }
+    xctype = ggapbe 
+    initial_wavefunctions = atomic_orbitals 
+    initial_charge_density = atomic_charge_density 
+    scf_convergence{
+        delta_total_energy = 1.E-8 Hartree
+    }
+    force_convergence{
+        max_force = 1.E-4 Hartree/Bohr
+    }
+    cutoff_wf = 25 Rydberg
+    cutoff_cd = 225 Rydberg
+    num_bands = 87 
+    smearing{
+        method = tetrahedron 
+        width = 0.001 hartree
+    }
+}
+control{
+    condition = -1 
+    cpumax = 23 hour
+}
+printoutlevel{
+    base = 1 
+}
+postprocessing{
+    dos{
+        sw_dos = on 
+        method = tetrahedral 
+    }
+    charge{
+        filetype = cube 
+        sw_charge_rspace = on 
+    }
+}

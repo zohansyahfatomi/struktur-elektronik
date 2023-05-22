@@ -1,0 +1,54 @@
+Control{
+    cpumax = 3600 sec
+    condition = Initial 
+}
+accuracy{
+    cutoff_wf = 25.00 rydberg
+    cutoff_cd = 225.00 rydberg
+    num_bands = 16  
+    ksampling{
+        mesh{
+            nx = 8 
+            ny = 8 
+            nz = 1 
+        }
+    }
+}
+structure{
+    unit_cell_type = primitive 
+    unit_cell{
+        a_vector = 4.6646320985 0.00 0.00 
+        b_vector = -2.3323160493 4.0396898966 0.00 
+        c_vector = 0.00 0.00 18.895488655 
+    }
+    atom_list{
+        atoms{
+            #tag element rx ry rz mobile
+             C 0.66666667 0.33333333 0.0 0
+             C 0.33333333 0.66666667 0.0 0
+        }
+    }
+    element_list{
+        #tag element atomicnumber mass zeta deviation
+         C 6 21894.5796 0.0 1.83
+    }
+}
+wavefunction_solver{
+    solvers{
+        #tag sol till_n prec cmix submat
+         mddavidson 2 on 1 on
+         rmm3 -1 on 1 on
+    }
+    rmm{
+        edelta_change_to_rmm = 1e-3 
+    }
+}
+charge_mixing{
+    mixing_methods{
+        #tag no method rmxs rmxe istr nbmix update
+         1 pulay 0.40 0.40 3 15 RENEW
+    }
+}
+printoutlevel{
+    base = 1 
+}

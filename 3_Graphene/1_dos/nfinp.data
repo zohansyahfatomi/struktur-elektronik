@@ -1,0 +1,74 @@
+Control{
+    cpumax = 3600 sec
+    condition = fixed_charge 
+}
+accuracy{
+    cutoff_wf = 25.00 rydberg
+    cutoff_cd = 225.00 rydberg
+    num_bands = 16 
+    ksampling{
+        mesh{
+            ny = 2
+            nx = 2 
+            nz = 1 
+        }
+        method = mesh 
+    }
+    initial_wavefunctions = matrix_diagon 
+    smearing{
+        method = tetrahedron 
+    }
+    ek_convergence{
+        num_max_iteration = 500 
+        sw_eval_eig_diff = on 
+        delta_eigenvalue = 1.e-5 
+        succession = 2 
+    }
+}
+structure{
+    unit_cell_type = primitive 
+    unit_cell{
+        a_vector = 4.6646320985 0.00 0.00 
+        b_vector = -2.3323160493 4.0396898966 0.00 
+        c_vector = 0.00 0.00 18.895488655 
+    }
+    atom_list{
+        atoms{
+            #tag element rx ry rz
+             C 0.6683780648989446 0.33162193120999583 2.169830097998066E-9
+             C 0.33162193278918717 0.6683780646807781 2.2227527833150917E-9
+        }
+    }
+    element_list{
+        #tag element atomicnumber mass zeta deviation
+         C 6 21894.5796 0.0 1.83
+    }
+}
+wavefunction_solver{
+    solvers{
+        #tag sol till_n prec cmix submat
+         mddavidson 2 on 1 on
+         rmm3 -1 on 1 on
+    }
+    rmm{
+        edelta_change_to_rmm = 1e-3 
+    }
+}
+charge_mixing{
+    mixing_methods{
+        #tag no method rmxs rmxe istr nbmix update
+         1 pulay 0.40 0.40 3 15 RENEW
+    }
+}
+printoutlevel{
+    base = 1 
+}
+postprocessing{
+    dos{
+        sw_dos = on 
+        method = tetrahedral 
+        variance = 1.d-6 
+        nwd_dos_window_width = 10 
+        deltaE_dos = 1.d-4 
+    }
+}
