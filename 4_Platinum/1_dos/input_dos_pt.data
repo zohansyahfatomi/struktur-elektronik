@@ -1,0 +1,62 @@
+Control{
+	condition = fixed_charge
+	cpumax = 1 hour
+	max_iteration = 60000
+}
+
+accuracy{
+	cutoff_wf =   25.00  rydberg
+	cutoff_cd =  225.00  rydberg
+	ksampling{
+		method = mesh
+                mesh{ nx = 1, ny = 1, nz = 1}
+	}
+        smearing{
+                method = tetrahedral
+        }
+
+	ek_convergence{
+		num_max_iteration = 300
+		sw_eval_eig_diff = on
+		delta_eigenvalue = 1.e-5 eV
+		succession   = 2
+                num_extra_bands = 10
+	}
+
+	initial_wavefunctions = matrix_diagon
+            matrix_diagon{
+               cutoff_wf =  12.25  rydberg
+            }
+}
+
+structure{
+        unit_cell{
+                 #units angstrom
+                 a_vector = 1.988385  1.988385 0.0
+                 b_vector = 0.0  1.988385 1.988385
+                 c_vector = 1.988385  0.0 1.988385
+        }
+	atom_list{
+	     atoms{
+		#tag  rx       ry         rz      element mobile 
+		     0.000     0.000     0.000          Pt  0
+	     }
+	}
+	element_list{ 
+	#tag element  atomicnumber     
+		Pt            78    
+	}
+}
+
+Postprocessing{
+	dos{
+        method = tetrahedral
+		sw_dos = ON
+		deltaE = 1.e-4 hartree
+		nwd_window_width    = 10
+	}
+}
+
+printlevel{
+	base = 1
+}

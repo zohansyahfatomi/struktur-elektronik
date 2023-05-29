@@ -1,0 +1,51 @@
+Control{
+	condition = initial
+	cpumax = 3 hour
+}
+
+accuracy{
+	cutoff_wf =   25  rydberg
+	cutoff_cd =  225.00  rydberg
+	ksampling{
+                method = mesh
+                mesh{ nx = 4, ny = 4, nz = 4}
+	}
+}
+structure{
+        unit_cell{
+                 #units angstrom
+                 a_vector = 3.9431503618848787  0.0 0.0
+                 b_vector = 0.0  3.9431503618848787 0.00
+                 c_vector = 0.00  0.0 3.9431503618848787
+        }
+	atom_list{
+	     atoms{
+		#tag  rx       ry         rz      element mobile 
+		     	0.000     0.000     0.000          Pt 0
+		     	0.0000000000000000    0.5000000000000000    0.5000000000000000 Pt 0
+	      		0.5000000000000000    0.0000000000000000    0.5000000000000000 Pt 0
+		       	0.5000000000000000    0.5000000000000000    0.0000000000000000 Pt 0
+	     }
+	}
+	element_list{ 
+	#tag element  atomicnumber     
+		Pt            78    
+	}
+
+}
+Postprocessing{
+	dos{
+		sw_dos = off
+                method = tetrahedral
+		deltaE = 1.e-4 hartree
+		nwd_window_width    = 10
+	}
+	charge{
+		sw_charge_rspace    = On
+		filetype            = cube
+		title  = "This is a title line for FM bcc Fe"
+	}
+}
+printlevel{
+	base = 1
+}

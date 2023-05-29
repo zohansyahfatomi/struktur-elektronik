@@ -1,0 +1,64 @@
+Control{
+	condition = fixed_charge
+	cpumax = 4 hour
+	max_iteration = 200000
+}
+
+accuracy{
+	cutoff_wf =   25.00  rydberg
+	cutoff_cd =  225.00  rydberg
+	num_bands = 20
+
+	ksampling{
+		method = file
+	}
+
+	ek_convergence{
+		num_max_iteration = 300
+		sw_eval_eig_diff = on
+		delta_eigenvalue = 1.e-6
+		succession   = 2
+                num_extra_bands = 10
+	}
+
+	initial_wavefunctions = matrix_diagon
+            matrix_diagon{
+               cutoff_wf =  12.25  rydberg
+            }
+
+}
+
+structure{
+        unit_cell{
+                 #units angstrom
+                 a_vector = 1.988385  1.988385 0.0
+                 b_vector = 0.0  1.988385 1.988385
+                 c_vector = 1.988385  0.0 1.988385
+        }
+	atom_list{
+	     atoms{
+		#tag  rx       ry         rz      element mobile 
+		     0.000     0.000     0.000          Pt  0
+	     }
+	}
+	element_list{ 
+	#tag element  atomicnumber     
+		Pt            78    
+	}
+}
+
+wavefunction_solver{
+	solvers{
+            #tag   sol    till_n
+                  mddavidson +2
+                  rmm3     -1
+	}
+
+	rmm{
+	     edelta_change_to_rmm = 1.0e-3
+	}
+}
+
+printlevel{
+	base = 1
+}
